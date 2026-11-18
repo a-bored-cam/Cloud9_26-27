@@ -1,0 +1,8 @@
+{
+    "java.import.gradle.enabled": false,
+    "java.import.maven.enabled": false,
+    "java.jdt.ls.androidSupport.enabled": "off",
+    "java.gradle.buildServer.enabled": "off",
+    "ftc.robot.address": "192.168.43.1",
+    "ftc.robot.port": 5555
+}
