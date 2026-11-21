@@ -18,6 +18,7 @@ public class ExTeleOp extends OpMode {
     private Follower follower;
     private DcMotor intake;
     private DcMotor flywheel;
+    private DcMotor cycler;
 
     boolean prevFlywheelButtonState = false;
     boolean flywheelRunning = false;
@@ -30,6 +31,7 @@ public class ExTeleOp extends OpMode {
 
         intake = hardwareMap.get(DcMotor.class, "intake");
         flywheel = hardwareMap.get(DcMotor.class, "flywheel");
+        cycler = hardwareMap.get(DcMotor.class, "cycler");
 
         prevFlywheelButtonState = false;
         flywheelRunning = false;
@@ -65,6 +67,18 @@ public class ExTeleOp extends OpMode {
 
         } else {
             intake.setPower(0.0);
+        }
+        
+        if (gamepad1.right_bumper) {
+            // This is running it backwards (which has priority)
+            cycler.setPower(1.0);
+            
+        } else if (gamepad1.right_trigger_pressed) {
+            // This is running it forwards (trigger)
+            cycler.setPower(-1.0);
+
+        } else {
+            cycler.setPower(0.0);
         }
 
 
